@@ -36,6 +36,7 @@ public class ToDoListMainFrmae extends BaseFrame {
 	public ToDoListMainFrmae() {
 		// TODO Auto-generated constructor stub
 		setFrame(400, 600, "To do list");
+		refresh();
 		close();
 	}
 
@@ -61,8 +62,11 @@ public class ToDoListMainFrmae extends BaseFrame {
 		workDataPanel.add(scrollBar);
 
 		// jpBottom 부분
+		refresh();
 		jbNewWork = new BButton("ADD NEW +").setButtonSize(150, 80).boderBackgroundNone();
-		workCount = new BLabel("count").setLabelSize(150, 80).textCenter().jlbFont(15, Font.BOLD);
+		workCount = new BLabel(workArrey.size() + " count").setLabelSize(150, 80).textCenter().jlbFont(15, Font.BOLD);
+//		workCount = new BLabel(workArrey.get(0).get(0) + "count").setLabelSize(150, 80).textCenter().jlbFont(15, Font.BOLD);
+//		workCount = new BLabel("count").setLabelSize(150, 80).textCenter().jlbFont(15, Font.BOLD);
 	}
 
 	@Override
@@ -83,7 +87,6 @@ public class ToDoListMainFrmae extends BaseFrame {
 		// 백터 데이터
 		
 		workArrey = new Vector<Vector<String>>();
-		
 		refresh();
 	}
 
