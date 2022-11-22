@@ -10,8 +10,10 @@ import java.util.Vector;
 
 public class DbManager {
 
-   private static final String UAR = "jdbc:mysql://localhost/?CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+   private static final String UAR = "jdbc:mysql://localhost/todo?CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
          + "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
+//   private static final String UAR = "jdbc:mysql://localhost/?CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+//		   + "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
    private static final String ID = "root";
    private static final String PW = "1234";
    private Connection con;

@@ -1,4 +1,4 @@
-package uis;
+ package uis;
 
 import java.awt.BorderLayout;
 
@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import bases.BButton;
 import javaGuiProject.BaseFrame;
 import javaGuiProject.BasePanel;
+import javaGuiProject.DbManager;
 
 public class WorkAddUi extends BaseFrame {
 	private JTextField workTest;
@@ -50,10 +51,10 @@ public class WorkAddUi extends BaseFrame {
 	public void addEvent() {
 		// TODO Auto-generated method stub
 		addWork.addActionListener(e->{
-			System.out.println(1);
+//			System.out.println(1);
 //			System.out.println(workTest.getText());
 //			workText = workTest.getText();
-			todo.returnWorkData(workTest.getText());
+			todo.addData(workTest.getText());
 //			System.exit(0);
 	//		super.setVisible(false);
 			

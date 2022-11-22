@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ import bases.BLabel;
 import baseuis.WorkDataPanel;
 import javaGuiProject.BaseFrame;
 import javaGuiProject.BasePanel;
+import javaGuiProject.DbManager;
 
 public class ToDoListMainFrmae extends BaseFrame {
 
@@ -28,7 +30,9 @@ public class ToDoListMainFrmae extends BaseFrame {
 	private String tmp;
 	private WorkAddUi tmpClass;
 	private Vector<Vector<String>> workArrey;
-
+	private DbManager db = new DbManager();
+	
+	
 	public ToDoListMainFrmae() {
 		// TODO Auto-generated constructor stub
 		setFrame(400, 600, "To do list");
@@ -80,7 +84,7 @@ public class ToDoListMainFrmae extends BaseFrame {
 		
 		workArrey = new Vector<Vector<String>>();
 		
-		
+		refresh();
 	}
 
 	@Override
@@ -90,26 +94,49 @@ public class ToDoListMainFrmae extends BaseFrame {
 //			System.out.println("1");
 			// tmpClass =  new WorkAddUi(this);
 			new WorkAddUi(this);
-			
 		});
 	}
 	
-	public void returnWorkData(String text) {
+	public void addData(String text) {
+		// TODO Auto-generated method stub
+		if (!text.trim().equals("")) {
+			db.setUpdata("INSERT INTO `todo`.`todolist` (`list`, `check`) VALUES (?, ?);", text, 0);
+			refresh();
+		}
+	}
+	
+	public void delData(String num) {
+		// TODO Auto-generated method stub
+		db.setUpdata("delete from todolist where no = ?;", num);
+		refresh();
+	}	
+	
+	private void refresh() {
 		// TODO Auto-generated method stub
 		
-
-		System.out.println(text);
-
-		if (!text.trim().equals("")) {
-			System.out.println(text);
-			worksPanel.add(new WorkDataPanel(text));
-
-			repaint();
-			revalidate();
-			
+		worksPanel.removeAll();
+		
+		workArrey = db.getData("SELECT * FROM todo.todolist order by no desc;");
+		
+		for (int i = 0; i < workArrey.size(); i++) {
+			worksPanel.add(new WorkDataPanel(workArrey.get(i), this));
+		}
+		
+		if(workArrey.size() < 7) {
+			for (int i = 0; i < 7 - workArrey.size(); i++) {
+				worksPanel.add(new JPanel());
+			}
 		}
 
+		repaint();
+		revalidate();
 	}
+	// 새로고침 하는 부분 따로,
+	// 저장하는 함수 따로
+	//		저장하는 부분을 만들고
+			// 새로고침하는 함수 호출
+	
+	
 //	public void returnWorkData() {
 //		// TODO Auto-generated method stub
 //		
