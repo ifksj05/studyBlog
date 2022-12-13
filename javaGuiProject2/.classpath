@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="basecomps"/>
 	<classpathentry kind="src" path="todolist"/>
 	<classpathentry kind="src" path="jdbc"/>
-	<classpathentry kind="src" path="snailGUI"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
