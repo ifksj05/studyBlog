@@ -69,8 +69,8 @@ public class DeleteData extends BaseFr {
 		});
 	}
 
-	public static void main(String[] args) {
-		new DeleteData(null);
-	}
+//	public static void main(String[] args) {
+//		new DeleteData(null);
+//	}
 
 }

@@ -2,6 +2,7 @@ package ui;
 
 import baseclasses.BaseBt;
 import baseclasses.BaseFr;
+import jdbc.DbManager;
 
 public class DataManager extends BaseFr {
 	private BaseBt insertButton;
@@ -11,6 +12,7 @@ public class DataManager extends BaseFr {
 	private BaseBt dataSelectButton;
 	private BaseBt backButton;
 	private DMUP_Main dmup_Main;
+	private DbManager db;
 
 	public DataManager(DMUP_Main dmup_Main) {
 		setFr("데이터 관리", 350, 500);
@@ -23,7 +25,7 @@ public class DataManager extends BaseFr {
 		dataAddButton = new BaseBt("데이터 추가");
 		dataDeleteButton = new BaseBt("데이터 삭제");
 		dataUpdateButton = new BaseBt("데이터 수정");
-		dataSelectButton = new BaseBt("데이터 검색");
+		dataSelectButton = new BaseBt("데이터 보기");
 		backButton = new BaseBt("돌아가기");
 	}
 
@@ -41,6 +43,8 @@ public class DataManager extends BaseFr {
 
 	@Override
 	public void addEvent() {
+		db = new DbManager();
+
 		backButton.addActionListener(e -> {
 			this.close();
 			dmup_Main.setVisible(true);
@@ -56,10 +60,19 @@ public class DataManager extends BaseFr {
 			new DeleteData(this);
 		});
 
+		dataUpdateButton.addActionListener(e -> {
+			super.setVisible(false);
+			new UpdateData(this);
+		});
+
+		dataSelectButton.addActionListener(e -> {
+			db.getData("SELECT * FROM dmup_db.user;");
+		});
+
 	}
-	
-	public static void main(String[] args) {
-		new DataManager(null);
-	}
+
+//	public static void main(String[] args) {
+//		new DataManager(null);
+//	}
 
 }
