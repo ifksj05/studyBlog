@@ -45,6 +45,12 @@ public class DataManager extends BaseFr {
 			this.close();
 			dmup_Main.setVisible(true);
 		});
+
+		dataAddButton.addActionListener(e -> {
+			super.setVisible(false);
+			new AddData(this);
+		});
+
 	}
 
 }

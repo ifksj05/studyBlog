@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class BasePn extends JPanel {
 	public BasePn jpTop;
@@ -28,8 +29,8 @@ public class BasePn extends JPanel {
 		return this;
 	}
 
-	public BasePn setBorder() {
-
+	public BasePn setBorder(int top, int left, int bottom, int right) {
+		super.setBorder(new EmptyBorder(top, left, bottom, right));
 		return this;
 	}
 

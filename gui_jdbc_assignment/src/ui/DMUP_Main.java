@@ -70,7 +70,8 @@ public class DMUP_Main extends BaseFr {
 					+ "  `u_name` VARCHAR(45) NULL,\r\n" + "  `u_address` VARCHAR(45) NULL,\r\n"
 					+ "  `u_number` VARCHAR(45) NULL,\r\n" + "  PRIMARY KEY (`u_no`))");
 
-			info("Table 생성 완료");
+			info("Table 생성 완료"); // 디비 존재하지 않을 경우 오류 메세지 실행
+
 		});
 
 		tableDeleteButton.addActionListener(e -> {
