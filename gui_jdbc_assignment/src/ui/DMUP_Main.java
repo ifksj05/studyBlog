@@ -59,6 +59,26 @@ public class DMUP_Main extends BaseFr {
 			info("DB 생성 완료");
 		});
 
+		deleteButton.addActionListener(e -> {
+			db.setData("DROP SCHEMA IF EXISTS `DMUP_DB` ;");
+
+			info("DB 삭제 완료");
+		});
+
+		tableCreateButton.addActionListener(e -> {
+			db.setData("CREATE TABLE IF NOT EXISTS `DMUP_DB`.`user` (\r\n" + "  `u_no` INT NOT NULL AUTO_INCREMENT,\r\n"
+					+ "  `u_name` VARCHAR(45) NULL,\r\n" + "  `u_address` VARCHAR(45) NULL,\r\n"
+					+ "  `u_number` VARCHAR(45) NULL,\r\n" + "  PRIMARY KEY (`u_no`))");
+
+			info("Table 생성 완료");
+		});
+
+		tableDeleteButton.addActionListener(e -> {
+			db.setData("DROP TABLE  if exists `DMUP_DB`.`user`;");
+
+			info("Table 삭제 완료");
+		});
+
 		dataUpdateButton.addActionListener(e -> {
 			new DataManager(this);
 			super.setVisible(false);
