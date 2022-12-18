@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 import baseclasses.BaseBt;
 import baseclasses.BaseFr;
 import baseclasses.BaseLb;
+import jdbc.DbManager;
 
 public class AddData extends BaseFr {
 	private JTextField jtbName;
@@ -13,6 +14,7 @@ public class AddData extends BaseFr {
 	private BaseBt addButton;
 	private BaseBt backButton;
 	private DataManager dataManager;
+	private DbManager db;
 
 	public AddData(DataManager dataManager) {
 		setFr("데이터 추가", 350, 250);
@@ -52,6 +54,27 @@ public class AddData extends BaseFr {
 
 	@Override
 	public void addEvent() {
+		db = new DbManager();
+
+		addButton.addActionListener(e -> {
+			String namedata = jtbName.getText(), addressdata = jtbAddress.getText(), numberdata = jtbNumber.getText();
+
+			if (namedata.equals("") || addressdata.equals("") || numberdata.equals("")) {
+				error("모든 값을 입력하시오.");
+				jtbName.setText("");
+				jtbAddress.setText("");
+				jtbNumber.setText("");
+			} else {
+				db.setData("INSERT INTO `dmup_db`.`user` (`u_name`, `u_address`, `u_number`) VALUES ('" + namedata
+						+ "', '" + addressdata + "', '" + numberdata + "');");
+				info("데이터 추가 성공");
+				
+				this.close();
+				dataManager.setVisible(true); // 돌아가는 코드
+
+			}
+
+		});
 
 		backButton.addActionListener(e -> {
 			this.close();
