@@ -3,6 +3,7 @@ package baseclasses;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public abstract class BaseFr extends JFrame implements BaseI {
 	public BasePn jpTop;
@@ -41,6 +42,15 @@ public abstract class BaseFr extends JFrame implements BaseI {
 		super.setVisible(true);
 		super.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+	}
+	
+	public void info(String txt) {
+		JOptionPane.showMessageDialog(null, txt, "", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+	public void error(String txt) {
+		JOptionPane.showMessageDialog(null, txt, "", JOptionPane.ERROR_MESSAGE);
+		
 	}
 	
 	public void allClose() {

@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import baseclasses.BaseBt;
 import baseclasses.BaseFr;
 import baseclasses.BasePn;
+import jdbc.DbManager;
 
 public class DMUP_Main extends BaseFr {
 	private BaseBt insertButton;
@@ -14,6 +15,7 @@ public class DMUP_Main extends BaseFr {
 	private BaseBt tableDeleteButton;
 	private BaseBt dataUpdateButton;
 	private BaseBt closeButton;
+	private DbManager db;
 
 	public DMUP_Main() {
 		System.out.println("DMUP_Main 실행");
@@ -48,6 +50,15 @@ public class DMUP_Main extends BaseFr {
 
 	@Override
 	public void addEvent() {
+		db = new DbManager();
+
+		creatButton.addActionListener(e -> {
+			db.setData("DROP SCHEMA IF EXISTS `DMUP_DB` ;"
+					+ "CREATE SCHEMA IF NOT EXISTS `DMUP_DB` DEFAULT CHARACTER SET utf8 ;");
+
+			info("DB 생성 완료");
+		});
+
 		dataUpdateButton.addActionListener(e -> {
 			new DataManager(this);
 			super.setVisible(false);
