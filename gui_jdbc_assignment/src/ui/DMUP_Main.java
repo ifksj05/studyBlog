@@ -37,7 +37,7 @@ public class DMUP_Main extends BaseFr {
 	@Override
 	public void addComp() {
 		jpCenter.setGrid(7, 1, 10, 10);
-
+		jpCenter.setBorder(10, 10, 10, 10);
 		jpCenter.add(insertButton);
 		jpCenter.add(creatButton);
 		jpCenter.add(deleteButton);

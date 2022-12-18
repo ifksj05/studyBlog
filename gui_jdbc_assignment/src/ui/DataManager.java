@@ -30,7 +30,7 @@ public class DataManager extends BaseFr {
 	@Override
 	public void addComp() {
 		jpCenter.setGrid(6, 1, 10, 10);
-
+		jpCenter.setBorder(10, 10, 10, 10);
 		jpCenter.add(insertButton);
 		jpCenter.add(dataAddButton);
 		jpCenter.add(dataDeleteButton);
@@ -51,6 +51,15 @@ public class DataManager extends BaseFr {
 			new AddData(this);
 		});
 
+		dataDeleteButton.addActionListener(e -> {
+			super.setVisible(false);
+			new DeleteData(this);
+		});
+
+	}
+	
+	public static void main(String[] args) {
+		new DataManager(null);
 	}
 
 }

@@ -60,7 +60,7 @@ public class AddData extends BaseFr {
 			String namedata = jtbName.getText(), addressdata = jtbAddress.getText(), numberdata = jtbNumber.getText();
 
 			if (namedata.equals("") || addressdata.equals("") || numberdata.equals("")) {
-				error("모든 값을 입력하시오.");
+				error("모든 값을 입력하시오");
 				jtbName.setText("");
 				jtbAddress.setText("");
 				jtbNumber.setText("");
@@ -68,9 +68,12 @@ public class AddData extends BaseFr {
 				db.setData("INSERT INTO `dmup_db`.`user` (`u_name`, `u_address`, `u_number`) VALUES ('" + namedata
 						+ "', '" + addressdata + "', '" + numberdata + "');");
 				info("데이터 추가 성공");
-				
-				this.close();
-				dataManager.setVisible(true); // 돌아가는 코드
+				jtbName.setText("");
+				jtbAddress.setText("");
+				jtbNumber.setText("");
+
+//				this.close();
+//				dataManager.setVisible(true); // 돌아가는 코드
 
 			}
 
