@@ -2,17 +2,31 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static Scanner sc;
-
 	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
 
-		sc = new Scanner(System.in);
-		String input = sc.next();
+		int[] arr = new int[26];
+		String s = in.next().toUpperCase();
 
-		input.toUpperCase();
-		
-		for (int i = 0; i < input.length(); i++) {
-			
+		for (int i = 0; i < s.length(); i++) {
+			if ('A' <= s.charAt(i) && s.charAt(i) <= 'Z') {
+				arr[s.charAt(i) - 'A']++;
+			}
 		}
+
+		int max = -1;
+		char ch = '?';
+
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+				ch = (char) (i + 65);
+			} else if (arr[i] == max) {
+				ch = '?';
+			}
+		}
+		
+		System.out.println(ch);
+
 	}
 }
