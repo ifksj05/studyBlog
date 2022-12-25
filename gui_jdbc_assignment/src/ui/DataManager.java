@@ -21,6 +21,7 @@ public class DataManager extends BaseFr {
 
 	@Override
 	public void mkComp() {
+
 		insertButton = new BaseBt("입력");
 		dataAddButton = new BaseBt("데이터 추가");
 		dataDeleteButton = new BaseBt("데이터 삭제");

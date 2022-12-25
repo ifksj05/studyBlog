@@ -66,6 +66,11 @@ public class DMUP_Main extends BaseFr {
 		});
 
 		tableCreateButton.addActionListener(e -> {
+
+			db.getData("IF EXISTS `DMUP_DB`.`user`");
+			
+			
+			
 			db.setData("CREATE TABLE IF NOT EXISTS `DMUP_DB`.`user` (\r\n" + "  `u_no` INT NOT NULL AUTO_INCREMENT,\r\n"
 					+ "  `u_name` VARCHAR(45) NULL,\r\n" + "  `u_address` VARCHAR(45) NULL,\r\n"
 					+ "  `u_number` VARCHAR(45) NULL,\r\n" + "  PRIMARY KEY (`u_no`))");
