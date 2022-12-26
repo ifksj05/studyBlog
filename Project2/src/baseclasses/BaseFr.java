@@ -34,11 +34,11 @@ public abstract class BaseFr extends JFrame implements BaseI {
 		jpMain.add(jpBottom, BorderLayout.SOUTH);
 
 		super.add(jpMain);
-
+		super.setLocationRelativeTo(null);
 		super.setVisible(true);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
-
+	
 	public void close() {
 		// TODO Auto-generated method stub
 		super.dispose();
