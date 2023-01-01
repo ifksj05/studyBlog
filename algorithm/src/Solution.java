@@ -1,28 +1,31 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
 
 class Solution {
 	public String solution(String[] participant, String[] completion) {
+
+		// 문제 이해
+		// participant와 completion값을 비교 participant에 없는 값을 찾아 출력.
+
+		// 1. participant를 넣어 참가자 HashMap을 제작한다.
+
 		String answer = "";
 
-		// 목적 participant에서 completion값들을 제외한 값을 리턴한다.
+		Arrays.sort(participant);
+		Arrays.sort(completion);
 
-		// completion값이 participant에 있다면 출력하지 않고 없다면 출력한다.
-		for (int i = 0; i < participant.length; i++) {
-
-			boolean complet = false;
-
-			for (int j = 0; j < completion.length; j++) {
-				if (participant[i].equals(completion[j])) // completion있다면 true를 반환
-					complet = true;
-
-//				System.out.println(complet);
-			}
-
-			if (complet) // 완주자 라면 넘기기
-				continue;
-
-			answer += participant[i] + " ";
-
+		int tmp = 0;
+		while (!participant[tmp].equals(completion[tmp++])) {
+			answer = participant[tmp-1];
 		}
+//		
+//		HashMap<String, Integer> names = new HashMap<>();
+//		HashMap<String, Integer> finishNames = new HashMap<>();
+//
+//		for (String name : participant) {
+//			names.put(name, tmp++);
+//		}
 
 		return answer;
 	}
@@ -30,7 +33,7 @@ class Solution {
 	public static void main(String[] args) {
 		Solution sl = new Solution();
 
-		String[] participant = { "marina", "josipa", "nikola", "vinko", "filipa" }, completion = { "josipa", "filipa", "marina", "nikola" };
+		String[] participant = { "leo", "kiki", "eden" }, completion = { "eden", "kiki" };
 
 		System.out.println(sl.solution(participant, completion));
 
